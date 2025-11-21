@@ -1,85 +1,94 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>HabeshAir</title>
-  <style>
-    :root{--primary:#006994;--secondary:#228B22;--accent:#fff;--text:#111;--muted:#64748b;--border:#e5e7eb}
-    *{box-sizing:border-box} body{margin:0;font:16px/1.5 system-ui,-apple-system,Segoe UI,Inter,Roboto,Arial;color:var(--text);background:#f7f7f8}
-    .container{max-width:1200px;margin:0 auto;padding:24px}
-    header,footer{background:#fff;border-bottom:1px solid var(--border)} footer{border-top:1px solid var(--border);border-bottom:none}
-    .row{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 24px}
-    .brand{display:flex;align-items:center;gap:12px}.logo{width:36px;height:36px;border-radius:8px;background:var(--primary);color:#fff;display:grid;place-items:center;font-weight:800}
-    nav{display:flex;gap:16px;flex-wrap:wrap} nav a{color:#334155;text-decoration:none;font-weight:600}
-    .cta{background:var(--secondary);color:#fff;border:none;padding:8px 14px;border-radius:999px;font-weight:700;cursor:pointer}
-    .hero{background:linear-gradient(135deg,var(--primary),var(--secondary));color:#fff;border-radius:24px;padding:24px;box-shadow:0 10px 30px rgba(0,0,0,.15)}
-    .grid{display:grid;gap:16px}
-    @media(min-width:900px){.grid-2{grid-template-columns:1.3fr .7fr}.grid-3{grid-template-columns:repeat(3,1fr)}.grid-4{grid-template-columns:repeat(4,1fr)}.grid-2even{grid-template-columns:1fr 1fr}}
-    .card{background:#fff;border:1px solid var(--border);border-radius:16px;padding:16px}
-    .btn{background:var(--primary);color:#fff;border:none;padding:10px 12px;border-radius:10px;font-weight:700;cursor:pointer}
-    label{display:grid;gap:6px;font-size:12px;color:#475569;font-weight:600}
-    input,select{padding:10px 12px;border:1px solid var(--border);border-radius:10px;outline-color:var(--primary)}
-    h1{margin:0 0 8px;font-size:36px;line-height:1.15;font-weight:800} h2{margin:8px 0 16px;font-size:24px;font-weight:800;color:var(--primary)}
-    .muted{color:var(--muted)} .flight{display:flex;justify-content:space-between;align-items:center;background:#fff;border:1px solid var(--border);border-radius:12px;padding:12px 16px}
-  </style>
-</head>
-<body>
-<header>
-  <div class="row">
-    <div class="brand"><div class="logo">HA</div><div style="font-weight:700">HabeshAir</div></div>
-    <nav>
-      <a href="/">Home</a>
-      <a href="#">Routes</a>
-      <a href="#">Schedule</a>
-      <a href="#">Book</a>
-      <a href="/portal/dashboard">Manage</a>
-      <a href="#">VIP Charter</a>
-      <a href="#">Help</a>
-    </nav>
-    <a class="cta" href="#">Book Now</a>
-  </div>
-</header>
+@extends('layouts.public')
 
-<main class="container">
-  <section class="hero">
-    <div class="grid grid-2">
-      <div>
-        <h1>Connecting Africa’s skies</h1>
-        <p style="opacity:.9">Reliable commuter flights and VIP charters across South Sudan. Mid-tier comfort, on-time operations.</p>
-        <div style="display:flex;gap:12px;margin-top:16px">
-          <a class="btn" href="#">Search Flights</a>
-          <a class="btn" style="background:#fff;color:var(--primary);border:2px solid #fff" href="#">VIP Charter</a>
+@section('content')
+<section class="hero">
+    <div class="grid" style="gap: 12px">
+        <span class="pill">Blue skies ahead</span>
+        <h1>HabeshAir keeps South Sudan connected with calm, cloud-soft service.</h1>
+        <p>Plan your commuter trip or request a VIP charter with a modern, sky-blue interface. Clear routes, honest timetables, and a support team that answers fast.</p>
+        <div class="grid" style="gap: 10px; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); max-width: 520px;">
+            <a class="cta" href="/book">Start a booking</a>
+            <a class="cta" style="background:#fff;color:var(--primary);box-shadow:none;border:1px solid var(--border)" href="{{ route('routes') }}">View our network</a>
         </div>
-      </div>
-      <div class="card">
-        <div class="grid" style="gap:8px">
-          <label>Origin<input placeholder="JUB - Juba"></label>
-          <label>Destination<input placeholder="WUU - Wau"></label>
-          <label>Date<input placeholder="2025-08-30"></label>
-          <button class="btn">Find flights</button>
+        <div class="grid grid-3" style="margin-top: 10px">
+            <div class="card">
+                <div class="tag">City hops</div>
+                <p>Daily commuter flights linking Juba to Wau, Malakal, Rumbek, and Bor.</p>
+            </div>
+            <div class="card">
+                <div class="tag">VIP comfort</div>
+                <p>Private charters with flexible timing and dedicated concierge follow-up.</p>
+            </div>
+            <div class="card">
+                <div class="tag">Real humans</div>
+                <p>Friendly support via phone, WhatsApp, or email whenever you need guidance.</p>
+            </div>
         </div>
-      </div>
     </div>
-  </section>
+    <div class="card">
+        <h3 style="margin-top:0">Quick trip planner</h3>
+        <p style="margin-top:-4px">Share a few details and our team will confirm options.</p>
+        <div class="grid" style="gap: 10px">
+            <label class="tag">From
+                <input style="width:100%;margin-top:6px" placeholder="e.g. JUB - Juba" aria-label="Origin">
+            </label>
+            <label class="tag">To
+                <input style="width:100%;margin-top:6px" placeholder="e.g. WUU - Wau" aria-label="Destination">
+            </label>
+            <label class="tag">Preferred date
+                <input type="date" style="width:100%;margin-top:6px" aria-label="Date">
+            </label>
+            <label class="tag">Trip type
+                <select style="width:100%;margin-top:6px" aria-label="Trip type">
+                    <option>One-way</option>
+                    <option>Return</option>
+                    <option>Private charter</option>
+                </select>
+            </label>
+            <a class="cta" style="justify-content:center" href="/book">Send my request</a>
+            <p style="margin:0;color:var(--muted);font-size:14px">No payment needed to start. We confirm within a few minutes during operating hours.</p>
+        </div>
+    </div>
+</section>
 
-  <div class="grid grid-3" style="margin-top:24px">
-    <div class="card"><div style="font-weight:700;margin-bottom:6px">Domestic Routes</div><div class="muted">Juba ↔ Wau, Malakal, Rumbek, Bor, Yambio</div></div>
-    <div class="card"><div style="font-weight:700;margin-bottom:6px">VIP Charter</div><div class="muted">Cessna 208 Caravan & Dornier 228 with dynamic pricing</div></div>
-    <div class="card"><div style="font-weight:700;margin-bottom:6px">Secure Payments</div><div class="muted">M-Pesa or Bank Transfer with email confirmations</div></div>
-  </div>
+<section style="margin-top: 32px">
+    <h2>Explore the site</h2>
+    <div class="grid grid-3">
+        <div class="card">
+            <div class="tag">Routes & cities</div>
+            <p>See every airport we currently serve plus upcoming launches.</p>
+            <a class="cta" style="background:#fff;color:var(--primary);box-shadow:none;border:1px solid var(--border)" href="{{ route('routes') }}">Open routes page</a>
+        </div>
+        <div class="card">
+            <div class="tag">Schedule</div>
+            <p>Week-by-week timings so you can pick the exact departure you want.</p>
+            <a class="cta" style="background:#fff;color:var(--primary);box-shadow:none;border:1px solid var(--border)" href="{{ route('schedule') }}">View timetable</a>
+        </div>
+        <div class="card">
+            <div class="tag">Help desk</div>
+            <p>Contact our agents, download policies, and review baggage guidance.</p>
+            <a class="cta" style="background:#fff;color:var(--primary);box-shadow:none;border:1px solid var(--border)" href="{{ route('help') }}">Get support</a>
+        </div>
+    </div>
+</section>
 
-  <h2>Popular Flights</h2>
-  <div class="grid grid-4">
-    <div class="flight"><b>JUB → WUU</b><span class="muted">08:30 → 09:30</span></div>
-    <div class="flight"><b>JUB → MAK</b><span class="muted">10:00 → 12:00</span></div>
-    <div class="flight"><b>JUB → RBX</b><span class="muted">07:00 → 08:00</span></div>
-    <div class="flight"><b>JUB → BOR</b><span class="muted">13:30 → 14:30</span></div>
-  </div>
-</main>
-
-<footer>
-  <div class="row" style="justify-content:flex-start;color:#64748b">© {{ date('Y') }} HabeshAir. All rights reserved.</div>
-</footer>
-</body>
-</html>
+<section style="margin-top: 32px" class="grid grid-2">
+    <div class="card">
+        <h3>Why travelers choose HabeshAir</h3>
+        <ul class="list">
+            <li><strong>Reliable timing.</strong> Morning departures that keep you productive.</li>
+            <li><strong>Comfortable cabins.</strong> Clean seats, cool air, and friendly hosts.</li>
+            <li><strong>Transparent prices.</strong> Clear quotes for both commuter and charter requests.</li>
+            <li><strong>Secure payments.</strong> Bank transfer and mobile money options available.</li>
+        </ul>
+    </div>
+    <div class="card">
+        <h3>Need something special?</h3>
+        <p>Our VIP desk can arrange private cabins, custom catering, and tarmac-side transfers. Tell us your preferred times and we will tailor the experience.</p>
+        <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px;">
+            <a class="cta" href="{{ route('vip') }}">Request VIP charter</a>
+            <a class="cta" style="background:#fff;color:var(--primary);box-shadow:none;border:1px solid var(--border)" href="/book">Plan a commuter trip</a>
+        </div>
+    </div>
+</section>
+@endsection
