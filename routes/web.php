@@ -1,0 +1,50 @@
+<?php
+
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\BookingRequestController;
+
+// Homepage -> loads resources/views/home.blade.php
+Route::view('/', 'home')->name('home');
+
+// Booking MVP (comment out if you didn't add the controller yet)
+if (class_exists(BookingRequestController::class)) {
+    Route::get('/book', [BookingRequestController::class, 'create'])->name('book.create');
+    Route::post('/book', [BookingRequestController::class, 'store'])->name('book.store');
+}
+
+// Dashboard (auth)
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+// Profile (auth)
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+if (file_exists(__DIR__.'/auth.php')) {
+    require __DIR__.'/auth.php';
+}
+
+/* --- Public pages (minimal placeholders) --- */
+Route::view('/routes', 'routes')->name('routes');
+Route::view('/schedule', 'schedule')->name('schedule');
+Route::view('/help', 'help')->name('help');
+
+/* VIP charter just reuses the booking form for now */
+Route::get('/vip', function () {
+    return redirect()->route('book.create')->withInput(['type' => 'vip']);
+})->name('vip');
+
+/* --- Public pages (minimal placeholders) --- */
+Route::view('/routes', 'routes')->name('routes');
+Route::view('/schedule', 'schedule')->name('schedule');
+Route::view('/help', 'help')->name('help');
+
+/* VIP charter just reuses the booking form for now */
+Route::get('/vip', function () {
+    return redirect()->route('book.create')->withInput(['type' => 'vip']);
+})->name('vip');
