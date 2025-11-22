@@ -1,121 +1,179 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>HabeshAir</title>
-  <style>
-    :root{--primary:#006994;--secondary:#228B22;--accent:#fff;--text:#111;--muted:#64748b;--border:#e5e7eb}
-    *{box-sizing:border-box} body{margin:0;font:16px/1.5 system-ui,-apple-system,Segoe UI,Inter,Roboto,Arial;color:var(--text);background:#f7f7f8}
-    .container{max-width:1200px;margin:0 auto;padding:24px}
-    header,footer{background:#fff;border-bottom:1px solid var(--border)} footer{border-top:1px solid var(--border);border-bottom:none}
-    .row{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 24px}
-    .brand{display:flex;align-items:center;gap:12px}.logo{width:36px;height:36px;border-radius:8px;background:var(--primary);color:#fff;display:grid;place-items:center;font-weight:800}
-    nav{display:flex;gap:16px;flex-wrap:wrap} nav a{color:#334155;text-decoration:none;font-weight:600}
-    .cta{background:var(--secondary);color:#fff;border:none;padding:8px 14px;border-radius:999px;font-weight:700;cursor:pointer}
-    .hero{background:linear-gradient(135deg,var(--primary),var(--secondary));color:#fff;border-radius:24px;padding:24px;box-shadow:0 10px 30px rgba(0,0,0,.15)}
-    .grid{display:grid;gap:16px}
-    @media(min-width:900px){.grid-2{grid-template-columns:1.3fr .7fr}.grid-3{grid-template-columns:repeat(3,1fr)}.grid-4{grid-template-columns:repeat(4,1fr)}.grid-2even{grid-template-columns:1fr 1fr}}
-    .card{background:#fff;border:1px solid var(--border);border-radius:16px;padding:16px}
-    .btn{background:var(--primary);color:#fff;border:none;padding:10px 12px;border-radius:10px;font-weight:700;cursor:pointer}
-    label{display:grid;gap:6px;font-size:12px;color:#475569;font-weight:600}
-    input,select{padding:10px 12px;border:1px solid var(--border);border-radius:10px;outline-color:var(--primary)}
-    h1{margin:0 0 8px;font-size:36px;line-height:1.15;font-weight:800} h2{margin:8px 0 16px;font-size:24px;font-weight:800;color:var(--primary)}
-    .muted{color:var(--muted)} .flight{display:flex;justify-content:space-between;align-items:center;background:#fff;border:1px solid var(--border);border-radius:12px;padding:12px 16px}
-  </style>
-</head>
-<body>
-<header>
-  <div class="row">
-    <div class="brand"><div class="logo">HA</div><div style="font-weight:700">HabeshAir</div></div>
-    <nav>
-      <a href="/">Home</a>
-      <a href="#">Routes</a>
-      <a href="#">Schedule</a>
-      <a href="#">Book</a>
-      <a href="/portal/dashboard">Manage</a>
-      <a href="#">VIP Charter</a>
-      <a href="#">Help</a>
-    </nav>
-    <a class="cta" href="#">Book Now</a>
-  </div>
-</header>
+{{-- resources/views/home.blade.php --}}
+@extends('layouts.app')
 
-<main class="container">
-  <section class="hero">
-    <div class="grid grid-2">
-      <div>
-        <h1>Connecting Africa’s skies</h1>
-        <p style="opacity:.9">Reliable commuter flights and VIP charters across South Sudan. Mid-tier comfort, on-time operations.</p>
-        <div style="display:flex;gap:12px;margin-top:16px">
-          <a class="btn" href="#">Search Flights</a>
-          <a class="btn" style="background:#fff;color:var(--primary);border:2px solid #fff" href="#">VIP Charter</a>
-        </div>
-    </div>
-    <div class="card">
-        <h3 style="margin-top:0">Quick trip planner</h3>
-        <p style="margin-top:-4px">Share a few details and our team will confirm options.</p>
-        <div class="grid" style="gap: 10px">
-            <label class="tag">From
-                <input style="width:100%;margin-top:6px" placeholder="e.g. JUB - Juba" aria-label="Origin">
-            </label>
-            <label class="tag">To
-                <input style="width:100%;margin-top:6px" placeholder="e.g. WUU - Wau" aria-label="Destination">
-            </label>
-            <label class="tag">Preferred date
-                <input type="date" style="width:100%;margin-top:6px" aria-label="Date">
-            </label>
-            <label class="tag">Trip type
-                <select style="width:100%;margin-top:6px" aria-label="Trip type">
-                    <option>One-way</option>
-                    <option>Return</option>
-                    <option>Private charter</option>
-                </select>
-            </label>
-            <a class="cta" style="justify-content:center" href="/book">Send my request</a>
-            <p style="margin:0;color:var(--muted);font-size:14px">No payment needed to start. We confirm within a few minutes during operating hours.</p>
-        </div>
-    </div>
-</section>
+@section('title', 'Habeshair – Regional & Humanitarian Flights')
 
-<section style="margin-top: 32px">
-    <h2>Explore the site</h2>
-    <div class="grid grid-3">
-        <div class="card">
-            <div class="tag">Routes & cities</div>
-            <p>See every airport we currently serve plus upcoming launches.</p>
-            <a class="cta" style="background:#fff;color:var(--primary);box-shadow:none;border:1px solid var(--border)" href="{{ route('routes') }}">Open routes page</a>
-        </div>
-        <div class="card">
-            <div class="tag">Schedule</div>
-            <p>Week-by-week timings so you can pick the exact departure you want.</p>
-            <a class="cta" style="background:#fff;color:var(--primary);box-shadow:none;border:1px solid var(--border)" href="{{ route('schedule') }}">View timetable</a>
-        </div>
-        <div class="card">
-            <div class="tag">Help desk</div>
-            <p>Contact our agents, download policies, and review baggage guidance.</p>
-            <a class="cta" style="background:#fff;color:var(--primary);box-shadow:none;border:1px solid var(--border)" href="{{ route('help') }}">Get support</a>
-        </div>
-    </div>
-</section>
+@section('content')
+<div class="hb-container">
 
-  <div class="grid grid-3" style="margin-top:24px">
-    <div class="card"><div style="font-weight:700;margin-bottom:6px">Domestic Routes</div><div class="muted">Juba ↔ Wau, Malakal, Rumbek, Bor, Yambio</div></div>
-    <div class="card"><div style="font-weight:700;margin-bottom:6px">VIP Charter</div><div class="muted">Cessna 208 Caravan & Dornier 228 with dynamic pricing</div></div>
-    <div class="card"><div style="font-weight:700;margin-bottom:6px">Secure Payments</div><div class="muted">M-Pesa or Bank Transfer with email confirmations</div></div>
-  </div>
+    {{-- HERO --}}
+    <section style="display:flex; flex-wrap:wrap; gap:2rem; align-items:center;">
+        <div style="flex:1 1 280px; min-width:260px;">
+            <div style="display:inline-flex; align-items:center; padding:0.25rem 0.75rem; border-radius:999px; background:rgba(14,116,144,0.08); color:#0b3d91; font-size:0.8rem; font-weight:600; margin-bottom:0.75rem;">
+                <span style="font-size:1rem; margin-right:0.35rem;">●</span>
+                Trusted regional & humanitarian operator
+            </div>
 
-  <h2>Popular Flights</h2>
-  <div class="grid grid-4">
-    <div class="flight"><b>JUB → WUU</b><span class="muted">08:30 → 09:30</span></div>
-    <div class="flight"><b>JUB → MAK</b><span class="muted">10:00 → 12:00</span></div>
-    <div class="flight"><b>JUB → RBX</b><span class="muted">07:00 → 08:00</span></div>
-    <div class="flight"><b>JUB → BOR</b><span class="muted">13:30 → 14:30</span></div>
-  </div>
-</main>
+            <h1 style="font-size:2.4rem; line-height:1.1; margin:0 0 0.75rem; color:#071937;">
+                Fly closer to the heart of Africa.
+            </h1>
 
-<footer>
-  <div class="row" style="justify-content:flex-start;color:#64748b">© {{ date('Y') }} HabeshAir. All rights reserved.</div>
-</footer>
-</body>
-</html>
+            <p style="font-size:0.98rem; max-width:28rem; color:#4b5563; margin-bottom:1.4rem;">
+                Habeshair connects remote communities, cargo, and humanitarian missions across East Africa
+                with safe, reliable Caravan operations and experienced crews.
+            </p>
+
+            <div style="display:flex; flex-wrap:wrap; gap:0.75rem; align-items:center;">
+                <a href="{{ route('book') }}" class="hb-btn hb-btn-primary">
+                    Book a flight
+                </a>
+
+                <a href="{{ route('routes') }}" class="hb-btn hb-btn-outline">
+                    View all routes
+                </a>
+
+                <div style="font-size:0.78rem; color:#6b7280;">
+                    <strong>24/7 ops desk</strong> · Priority support for critical missions
+                </div>
+            </div>
+        </div>
+
+        <div style="flex:1 1 260px; min-width:260px;">
+            <div style="position:relative; padding:1rem;">
+                <div style="border-radius:1.5rem; overflow:hidden; background:linear-gradient(145deg,#0b3d91,#1e90ff); padding:1.5rem; color:#e5f2ff; box-shadow:0 20px 40px rgba(15,23,42,0.35);">
+                    <div style="font-size:0.78rem; text-transform:uppercase; letter-spacing:0.12em; opacity:0.9; margin-bottom:0.65rem;">
+                        Today’s featured sector
+                    </div>
+                    <div style="font-size:1.2rem; font-weight:600; margin-bottom:0.25rem;">
+                        Juba ✈ Goma
+                    </div>
+                    <div style="font-size:0.85rem; margin-bottom:0.85rem;">
+                        Humanitarian & cargo uplift · Caravan 208
+                    </div>
+
+                    <div style="display:flex; justify-content:space-between; gap:1rem; font-size:0.78rem; margin-bottom:0.75rem;">
+                        <div>
+                            <div style="opacity:0.75;">Block time</div>
+                            <div>1h 40m*</div>
+                        </div>
+                        <div>
+                            <div style="opacity:0.75;">Frequency</div>
+                            <div>On demand</div>
+                        </div>
+                        <div>
+                            <div style="opacity:0.75;">Payload</div>
+                            <div>Up to 1.1t</div>
+                        </div>
+                    </div>
+
+                    <div style="display:flex; justify-content:space-between; align-items:center; font-size:0.78rem; border-top:1px dashed rgba(226,232,255,0.4); padding-top:0.75rem; margin-top:0.25rem;">
+                        <span>*Route and timing subject to permits & weather</span>
+                        <a href="{{ route('book') }}" style="color:#facc15; font-weight:600;">Request sector →</a>
+                    </div>
+                </div>
+
+                <div style="position:absolute; inset:auto 1rem -0.75rem auto; background:#ffffff; border-radius:999px; padding:0.35rem 0.85rem; font-size:0.75rem; display:flex; align-items:center; gap:0.35rem; box-shadow:0 8px 20px rgba(15,23,42,0.25);">
+                    <span style="width:8px; height:8px; border-radius:999px; background:#22c55e;"></span>
+                    On-time performance <strong>98%</strong>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {{-- HIGHLIGHTS --}}
+    <section style="margin-top:3rem;">
+        <h2 style="font-size:1.5rem; margin-bottom:0.6rem; color:#071937;">Why operators choose Habeshair</h2>
+        <p style="font-size:0.9rem; color:#4b5563; margin-bottom:1.4rem;">
+            Designed for NGO charters, medical evacuations, cargo contracts, and scheduled regional services.
+        </p>
+
+        <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1.1rem;">
+            <article style="background:#ffffff; border-radius:1rem; padding:1.1rem 1.2rem; box-shadow:0 10px 22px rgba(15,23,42,0.08);">
+                <h3 style="font-size:1rem; margin:0 0 0.4rem; color:#0b3d91;">Safety-first operations</h3>
+                <p style="font-size:0.85rem; color:#4b5563; margin:0;">
+                    ICAO-compliant procedures, disciplined crew training, and rigorous maintenance culture built by active line pilots.
+                </p>
+            </article>
+
+            <article style="background:#ffffff; border-radius:1rem; padding:1.1rem 1.2rem; box-shadow:0 10px 22px rgba(15,23,42,0.08);">
+                <h3 style="font-size:1rem; margin:0 0 0.4rem; color:#0b3d91;">Remote & challenging strips</h3>
+                <p style="font-size:0.85rem; color:#4b5563; margin:0;">
+                    Specialized in short, unpaved, and remote airfields with careful performance planning and route risk assessment.
+                </p>
+            </article>
+
+            <article style="background:#ffffff; border-radius:1rem; padding:1.1rem 1.2rem; box-shadow:0 10px 22px rgba(15,23,42,0.08);">
+                <h3 style="font-size:1rem; margin:0 0 0.4rem; color:#0b3d91;">Cargo & humanitarian focus</h3>
+                <p style="font-size:0.85rem; color:#4b5563; margin:0;">
+                    Flexible cabin configuration for cargo, relief goods, and mixed missions, aligned with NGO and UN requirements.
+                </p>
+            </article>
+        </div>
+    </section>
+
+    {{-- ROUTES / SCHEDULE PREVIEW --}}
+    <section style="margin-top:3rem;">
+        <div style="display:flex; justify-content:space-between; align-items:flex-end; gap:1rem; margin-bottom:0.9rem;">
+            <div>
+                <h2 style="font-size:1.45rem; margin:0 0 0.4rem; color:#071937;">Sample routes & sectors</h2>
+                <p style="font-size:0.87rem; color:#4b5563; margin:0;">
+                    Explore our growing network of regional routes and charter corridors.
+                </p>
+            </div>
+            <a href="{{ route('routes') }}" class="hb-btn hb-btn-outline">
+                Open full route map
+            </a>
+        </div>
+
+        <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:1rem;">
+            @php
+                $sampleRoutes = [
+                    ['from' => 'Juba (JUB)', 'to' => 'Goma (GOM)', 'type' => 'Humanitarian / Cargo', 'days' => 'On demand'],
+                    ['from' => 'Juba (JUB)', 'to' => 'Entebbe (EBB)', 'type' => 'Passengers / Cargo', 'days' => 'Several times weekly'],
+                    ['from' => 'Regional', 'to' => 'Remote strips', 'type' => 'Charter / MedEvac', 'days' => '24/7 on request'],
+                ];
+            @endphp
+
+            @foreach($sampleRoutes as $r)
+                <article style="background:#ffffff; border-radius:1rem; padding:1rem 1.1rem; border:1px solid #e5e7eb;">
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.4rem;">
+                        <div style="font-size:0.85rem; color:#6b7280;">Sector</div>
+                        <span style="font-size:0.7rem; padding:0.1rem 0.6rem; border-radius:999px; background:#ecfeff; color:#0369a1;">
+                            {{ $r['type'] }}
+                        </span>
+                    </div>
+                    <div style="font-size:1.05rem; font-weight:600; color:#071937; margin-bottom:0.35rem;">
+                        {{ $r['from'] }} → {{ $r['to'] }}
+                    </div>
+                    <div style="font-size:0.82rem; color:#4b5563; margin-bottom:0.65rem;">
+                        {{ $r['days'] }}
+                    </div>
+                    <a href="{{ route('book') }}" style="font-size:0.8rem; color:#0b3d91; font-weight:600;">
+                        Request this flight →
+                    </a>
+                </article>
+            @endforeach
+        </div>
+    </section>
+
+    {{-- FINAL CTA --}}
+    <section style="margin-top:3rem;">
+        <div style="border-radius:1.5rem; padding:1.3rem 1.4rem; background:linear-gradient(135deg,#0b3d91,#1e3a8a); color:#e5e7ff; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:1rem;">
+            <div>
+                <h2 style="font-size:1.35rem; margin:0 0 0.4rem;">Planning a mission or new route?</h2>
+                <p style="font-size:0.87rem; margin:0;">
+                    Talk to our operations team about basing, contract flying, or humanitarian corridors.
+                </p>
+            </div>
+            <div style="display:flex; flex-wrap:wrap; gap:0.6rem;">
+                <a href="{{ route('book') }}" class="hb-btn hb-btn-primary" style="background: #facc15; color:#1f2937;">
+                    Request charter
+                </a>
+                <a href="{{ route('help') }}" class="hb-btn hb-btn-outline" style="border-color:rgba(226,232,255,0.7);">
+                    Contact operations
+                </a>
+            </div>
+        </div>
+    </section>
+</div>
+@endsection
