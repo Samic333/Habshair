@@ -1,17 +1,26 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
+@extends('layouts.site')
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900">
-                    {{ __("You're logged in!") }}
-                </div>
-            </div>
+@section('content')
+  <section class="hero">
+    <div class="grid grid-2even">
+      <div>
+        <h1>Customer portal</h1>
+        <p style="opacity:.9">A centralized place to manage your trips, payments, and passenger details.</p>
+        <p class="muted">Customer portal coming soon; you’ll be able to view your trips here.</p>
+        <div style="margin-top:12px">
+          <a class="btn" href="{{ route('book') }}">Book a flight</a>
+          <a class="btn" style="background:#fff;color:var(--primary);border:2px solid #fff" href="{{ route('vip') }}">VIP charter</a>
         </div>
+      </div>
+      <div class="card">
+        <div style="font-weight:700;margin-bottom:8px">What you’ll find here</div>
+        <ul class="muted" style="line-height:1.6;padding-left:18px;margin:0">
+          <li>Upcoming and past trips</li>
+          <li>Passenger manifests</li>
+          <li>Payment receipts</li>
+          <li>Support and change requests</li>
+        </ul>
+      </div>
     </div>
-</x-app-layout>
+  </section>
+@endsection
