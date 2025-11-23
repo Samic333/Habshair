@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\QuoteController;
+use App\Http\Controllers\BookingController;
 
 // Homepage
 Route::view('/', 'home')->name('home');
@@ -27,7 +28,8 @@ Route::prefix('services')->name('services.')->group(function () {
 Route::view('/fleet', 'fleet.index')->name('fleet');
 
 // Booking and VIP
-Route::get('/book', fn () => view('booking'))->name('book');
+Route::get('/book', [BookingController::class, 'showForm'])->name('book');
+Route::post('/book', [BookingController::class, 'submit'])->middleware('throttle:5,1')->name('booking.submit');
 Route::get('/vip', fn () => view('services.vip'))->name('vip');
 
 // Customer portal landing (placeholder, not gated)
