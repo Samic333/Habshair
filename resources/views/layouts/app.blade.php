@@ -188,12 +188,17 @@
 
         <div class="hb-menu">
             <a href="{{ route('routes') }}">Routes</a>
-            <a href="{{ route('schedule') }}">Schedule</a>
-            <a href="{{ route('vip') }}">VIP</a>
-            <a href="{{ route('help') }}">Help & Support</a>
+            <a href="{{ route('services.air-charter') }}">Air Charter</a>
+            <a href="{{ route('services.cargo') }}">Cargo</a>
+            <a href="{{ route('services.medevac') }}">MedEvac</a>
+            <a href="{{ route('fleet') }}">Fleet</a>
+            <a href="{{ route('about') }}">About</a>
+            <a href="{{ route('contact') }}">Contact</a>
+            <a href="{{ route('help') }}">Help</a>
 
             <div class="hb-menu-cta">
                 <a href="{{ route('book') }}" class="hb-btn hb-btn-primary">Book a Flight</a>
+                <a href="{{ route('vip') }}" class="hb-btn hb-btn-outline">VIP Charter</a>
 
                 @auth
                     <a href="{{ route('dashboard') }}" class="hb-btn hb-btn-outline">Dashboard</a>
@@ -221,6 +226,8 @@
         <div class="hb-footer-links">
             <a href="{{ route('help') }}">Customer support</a>
             <a href="{{ route('routes') }}">Route map</a>
+            <a href="{{ route('fleet') }}">Fleet</a>
+            <a href="{{ route('about') }}">About</a>
             <a href="{{ route('vip') }}">VIP services</a>
             <a href="{{ route('book') }}">Book now</a>
         </div>

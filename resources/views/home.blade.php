@@ -175,5 +175,12 @@
             </div>
         </div>
     </section>
+
+    {{-- QUOTE REQUEST FORM --}}
+    <section style="margin-top:3rem;">
+        <h2 style="font-size:1.45rem; margin:0 0 0.6rem; color:#071937;">Request a quote</h2>
+        <p style="font-size:0.9rem; color:#4b5563; margin:0 0 1rem;">Share the basics of your mission and we’ll respond with options and timing.</p>
+        <x-quote-request-form buttonLabel="Send request" />
+    </section>
 </div>
 @endsection
